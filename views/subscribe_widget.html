@@ -6,10 +6,10 @@
 
 <script>
 $(function () {
-	$('#subscribe_widget_{{ list_id }}').on ('submit', function (e) {
+	$('#subscribe_widget_{{ list_id }}_{{ rand }}').on ('submit', function (e) {
 		e.preventDefault ();
 
-		var el =  $('#subscribe_widget_{{ list_id }}'),
+		var el =  $('#subscribe_widget_{{ list_id }}_{{ rand }}'),
 			form = el[0],
 			email = form.elements.email.value,
 			regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
