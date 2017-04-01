@@ -12,7 +12,9 @@ class API extends \Restful {
 			$_POST['email']
 		);
 
-		if ($api->errorCode) {
+		if ($api->errorCode == 214) {
+			return $this->error (__ ('It looks like you\'re already subscribed. Thank you!'));
+		} elseif ($api->errorCode) {
 			return $this->error (__ ('Unable to subscribe. Please try again later.'));
 		}
 		
