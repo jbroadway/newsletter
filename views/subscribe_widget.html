@@ -26,7 +26,11 @@ $(function () {
 				if (! res.success) {
 					el.replaceWith ('<p>' + res.error + '</p>');
 				} else {
-					el.replaceWith ('<p>' + res.data + '</p>');
+					{% if fwd != '' %}
+						window.location.replace ('{{ fwd }}');
+					{% else %}
+						el.replaceWith ('<p>' + res.data + '</p>');
+					{% end %}
 				}
 			}
 		);

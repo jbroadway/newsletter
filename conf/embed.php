@@ -10,4 +10,7 @@ list[not equals] = 0
 list[require] = "apps/newsletter/lib/Functions.php"
 list[callback] = "newsletter_list_names"
 
+fwd[label] = "Redirect to thank you page (optional)"
+fwd[type] = text
+
 ; */ ?>
