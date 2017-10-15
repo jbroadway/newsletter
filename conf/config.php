@@ -7,6 +7,7 @@ title = Newsletter
 mailchimp_api = ""
 default_list = ""
 layout = default
+forward_on_success = ""
 
 [Admin]
 

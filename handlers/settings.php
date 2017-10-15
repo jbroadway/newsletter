@@ -19,7 +19,8 @@ $form->data = array (
 	'mailchimp_api' => Appconf::newsletter ('Newsletter', 'mailchimp_api'),
 	'default_list' => Appconf::newsletter ('Newsletter', 'default_list'),
 	'layout' => Appconf::newsletter ('Newsletter', 'layout'),
-	'layouts' => admin_get_layouts ()
+	'layouts' => admin_get_layouts (),
+	'forward_on_success' => Appconf::newsletter ('Newsletter', 'forward_on_success')
 );
 
 echo $form->handle (function ($form) {
@@ -35,7 +36,8 @@ echo $form->handle (function ($form) {
 			'title' => $_POST['title'],
 			'mailchimp_api' => $_POST['mailchimp_api'],
 			'default_list' => $_POST['default_list'],
-			'layout' => $_POST['layout']
+			'layout' => $_POST['layout'],
+			'forward_on_success' => $_POST['forward_on_success']
 		)
 	));
 	

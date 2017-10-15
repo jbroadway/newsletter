@@ -12,6 +12,9 @@
 <input type="text" name="title" size="40" value="{{ title|quotes }}" />
 <span class="notice" id="title-notice">{"You must enter a page title."}</span></p>
 
+<p>{"Redirect to thank you page (optional)"}:<br />
+<input type="text" name="forward_on_success" size="40" value="{{ forward_on_success|quotes }}" /></p>
+
 <p>{"Default newsletter"}:<br />
 <select name="default_list">
 {% foreach newsletter_raw_lists () as newsletter %}

@@ -32,7 +32,12 @@ echo $form->handle (function ($form) use ($default_list) {
 		return;
 	}
 
-	printf ('<p>%s</p>', __ ('Thank you for signing up to receive our newsletter. Check your inbox for an email to confirm your subscription.'));
+	$fwd = Appconf::newsletter ('Newsletter', 'forward_on_success');
+	if ($fwd != '') {
+		$form->controller->redirect ($fwd);
+	} else {
+		printf ('<p>%s</p>', __ ('Thank you for signing up to receive our newsletter. Check your inbox for an email to confirm your subscription.'));
+	}
 });
 
 ?>
