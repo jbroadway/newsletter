@@ -26,7 +26,11 @@ echo $form->handle (function ($form) use ($default_list) {
 		)
 	);
 	
-	if ($api->errorCode) {
+	if ($api->errorCode == 400) {
+		printf ('<p>%s</p>', __ ('It looks like you\'re already subscribed. Thank you!'));
+		error_log ('[newsletter/index] ' . $api->errorCode . ' ' . $api->errorMessage);
+		return;
+	} elseif ($api->errorCode) {
 		printf ('<p>%s</p>', __ ('Unable to load lists from MailChimp at this time.'));
 		error_log ('[newsletter/index] ' . $api->errorCode . ' ' . $api->errorMessage);
 		return;

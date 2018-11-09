@@ -29,7 +29,7 @@ function newsletter_raw_lists ($apikey = null) {
 	$apikey = $apikey ? $apikey : Appconf::newsletter ('Newsletter', 'mailchimp_api');
 	$api = new MCAPI($apikey);
 	$retval = $api->lists ();
-	return is_array ($retval['data']) ? $retval['data'] : array ();
+	return is_array ($retval['lists']) ? $retval['lists'] : array ();
 }
 
 ?>

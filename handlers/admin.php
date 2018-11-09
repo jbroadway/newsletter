@@ -24,8 +24,8 @@ if ($api->errorCode) {
 	error_log ('[newsletter/admin] ' . $api->errorCode . ' ' . $api->errorMessage);
 } else {
 	echo $tpl->render ('newsletter/admin', array (
-		'lists_count' => $retval['total'],
-		'lists' => $retval['data'],
+		'lists_count' => $retval['total_items'],
+		'lists' => $retval['lists'],
 		'default_list' => Appconf::newsletter ('Newsletter', 'default_list')
 	));
 }
