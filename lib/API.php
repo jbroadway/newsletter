@@ -7,7 +7,7 @@ class API extends \Restful {
 		$apikey = \Appconf::newsletter ('Newsletter', 'mailchimp_api');
 		$api = new \MCAPI($apikey);
 		
-		if (!isset ($_POST['list_id'])) {
+		if (! isset ($_POST['list_id'])) {
 			$_POST['list_id'] = \Appconf::newsletter ('Newsletter', 'default_list');
 		}
 
@@ -17,8 +17,10 @@ class API extends \Restful {
 		);
 
 		if ($api->errorCode == 400) {
+			error_log ('[newsletter/api/subscribe] ' . $api->errorCode . ' ' . $api->errorMessage);
 			return $this->error (__ ('It looks like you\'re already subscribed. Thank you!'));
 		} elseif ($api->errorCode) {
+			error_log ('[newsletter/api/subscribe] ' . $api->errorCode . ' ' . $api->errorMessage);
 			return $this->error (__ ('Unable to subscribe. Please try again later.'));
 		}
 		

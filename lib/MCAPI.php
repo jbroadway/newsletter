@@ -30,7 +30,7 @@ class MCAPI {
 		$data = [
 			'email_address' => $email,
 			'status' => 'subscribed',
-			'merge_fields' => $merge_fields
+			'merge_fields' => (object) $merge_fields
 		];
 
 		$res = $this->mc->post ('lists/' . $id . '/members', $data);

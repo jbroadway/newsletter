@@ -20,7 +20,7 @@ echo $form->handle (function ($form) use ($default_list) {
 	$retval = $api->listSubscribe (
 		$default_list,
 		$_POST['email'],
-		array (
+		(object) array (
 			'FNAME' => $_POST['first_name'],
 			'LNAME' => $_POST['last_name']
 		)
