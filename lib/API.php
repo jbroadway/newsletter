@@ -6,6 +6,10 @@ class API extends \Restful {
 	public function post_subscribe () {
 		$apikey = \Appconf::newsletter ('Newsletter', 'mailchimp_api');
 		$api = new \MCAPI($apikey);
+		
+		if (!isset ($_POST['list_id'])) {
+			$_POST['list_id'] = \Appconf::newsletter ('Newsletter', 'default_list');
+		}
 
 		$retval = $api->listSubscribe (
 			$_POST['list_id'],
