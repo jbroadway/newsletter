@@ -1,6 +1,7 @@
 <form class="newsletter-widget" id="subscribe_widget_{{ list_id }}_{{ rand }}">
 	<label>{"Email"}:</label>	
 	<input name="email" type="email" />
+	<input name="tags" type="hidden" value="{{tags|quotes}}" />
 	<input type="submit" value="{'Subscribe'}" />
 </form>
 
@@ -12,6 +13,7 @@ $(function () {
 		var el =  $('#subscribe_widget_{{ list_id }}_{{ rand }}'),
 			form = el[0],
 			email = form.elements.email.value,
+			tags = form.elements.tags.value,
 			regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 
 		if (! regex.test (email)) {
@@ -21,7 +23,7 @@ $(function () {
 
 		$.post (
 			'/newsletter/api/subscribe',
-			{list_id: '{{list_id}}', email: email},
+			{list_id: '{{list_id}}', email: email, tags: tags},
 			function (res) {
 				if (! res.success) {
 					el.replaceWith ('<p>' + res.error + '</p>');

@@ -10,10 +10,15 @@ class API extends \Restful {
 		if (! isset ($_POST['list_id'])) {
 			$_POST['list_id'] = \Appconf::newsletter ('Newsletter', 'default_list');
 		}
+		
+		$merge_fields = [];
+		$tags = preg_split ('/\s?,\s?/', trim ($_POST['tags']));
 
 		$retval = $api->listSubscribe (
 			$_POST['list_id'],
-			$_POST['email']
+			$_POST['email'],
+			$merge_fields,
+			$tags
 		);
 
 		if ($api->errorCode == 400) {
@@ -27,5 +32,3 @@ class API extends \Restful {
 		return __ ('Thank you for subscribing. Check your inbox for an email to confirm your subscription.');
 	}
 }
-
-?>

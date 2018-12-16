@@ -13,4 +13,7 @@ list[callback] = "newsletter_list_names"
 fwd[label] = "Redirect to thank you page (optional)"
 fwd[type] = text
 
+tags[label] = "Tags (comma-separated)"
+tags[type] = text
+
 ; */ ?>
