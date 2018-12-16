@@ -16,4 +16,8 @@ fwd[type] = text
 tags[label] = "Tags (comma-separated)"
 tags[type] = text
 
+name[label] = "Collect first and last name?"
+name[type] = select
+name[callback] = "newsletter_yes_no"
+
 ; */ ?>

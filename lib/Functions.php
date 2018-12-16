@@ -22,6 +22,10 @@ function newsletter_list_names () {
 	return $retarr;
 }
 
+function newsletter_yes_no () {
+	return [['key' => 'no', 'value' => __ ('No')], ['key' => 'yes', 'value' => __ ('Yes')]];
+}
+
 /**
  * Return a raw array of list results.
  */

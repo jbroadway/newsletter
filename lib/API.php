@@ -12,7 +12,17 @@ class API extends \Restful {
 		}
 		
 		$merge_fields = [];
+		if ($_POST['first'] != '') {
+			$merge_fields['FNAME'] = $_POST['first'];
+		}
+		if ($_POST['last'] != '') {
+			$merge_fields['LNAME'] = $_POST['last'];
+		}
+
 		$tags = preg_split ('/\s?,\s?/', trim ($_POST['tags']));
+		if (! is_array ($tags)) {
+			$tags = [];
+		}
 
 		$retval = $api->listSubscribe (
 			$_POST['list_id'],
