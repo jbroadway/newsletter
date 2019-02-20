@@ -26,13 +26,15 @@ class MCAPI {
 		return $res;
 	}
 	
-	public function listSubscribe ($id, $email, $merge_fields = [], $tags = []) {
+	public function listSubscribe ($id, $email, $merge_fields = [], $tags = [], $extra_params = []) {
 		$data = [
 			'email_address' => $email,
 			'status' => 'subscribed',
 			'merge_fields' => (object) $merge_fields,
 			'tags' => $tags
 		];
+		
+		$data = $data + $extra_params;
 
 		$res = $this->mc->post ('lists/' . $id . '/members', $data);
 		
