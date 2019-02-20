@@ -47,12 +47,12 @@ $(function () {
 			{list_id: '{{list_id}}', email: email, tags: tags, first: first, last: last},
 			function (res) {
 				if (! res.success) {
-					el.replaceWith ('<p>' + res.error + '</p>');
+					el.replaceWith ('<p class="newsletter-response">' + res.error + '</p>');
 				} else {
 					{% if fwd != '' %}
 						window.location.replace ('{{ fwd }}');
 					{% else %}
-						el.replaceWith ('<p>' + res.data + '</p>');
+						el.replaceWith ('<p class="newsletter-response">' + res.data + '</p>');
 					{% end %}
 				}
 			}
