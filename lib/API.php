@@ -32,8 +32,13 @@ class API extends \Restful {
 		);
 
 		if ($api->errorCode == 400) {
-			error_log ('[newsletter/api/subscribe] ' . $api->errorCode . ' ' . $api->errorMessage);
-			return $this->error (__ ('It looks like you\'re already subscribed. Thank you!'));
+			if (strpos ($api->errorMessage, 'permanently deleted') !== false) {
+				error_log ('[newsletter/api/subscribe] ' . $api->errorCode . ' ' . $api->errorMessage);
+				return $this->error (__ ('Your email was previously deleted from our system. Please contact us for help.'));
+			} else {
+				error_log ('[newsletter/api/subscribe] ' . $api->errorCode . ' ' . $api->errorMessage);
+				return $this->error (__ ('It looks like you\'re already subscribed. Thank you!'));
+			}
 		} elseif ($api->errorCode) {
 			error_log ('[newsletter/api/subscribe] ' . $api->errorCode . ' ' . $api->errorMessage);
 			return $this->error (__ ('Unable to subscribe. Please try again later.'));
